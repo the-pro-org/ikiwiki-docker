@@ -14,6 +14,7 @@ USER ikiwiki
 RUN git config --global user.email "you@example.com" && \
   git config --global user.name "Your Name"
 RUN echo $'wiki\n\nadmin\nadmin\nadmin' | ikiwiki --setup /etc/ikiwiki/auto.setup
+VOLUME ["/home/ikiwiki"]
 
 USER root
 RUN a2enmod cgi
