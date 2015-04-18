@@ -13,7 +13,9 @@ WORKDIR /home/ikiwiki
 USER ikiwiki
 RUN git config --global user.email "you@example.com" && \
   git config --global user.name "Your Name"
-RUN echo $'wiki\n\nadmin\nadmin\nadmin' | ikiwiki --setup /etc/ikiwiki/auto.setup
+RUN cp /etc/ikiwiki/auto.setup example.setup
+RUN sed -i 's/add_plugins =>.*/add_plugins => [qw{goodstuff websetup 404}],/' example.setup
+RUN echo $'wiki\n\nadmin\nadmin\nadmin' | ikiwiki --setup example.setup
 VOLUME ["/home/ikiwiki"]
 
 USER root
