@@ -8,12 +8,13 @@ RUN apt-get install -y python
 RUN apt-get install -y apache2
 #RUN apt-get clean
 
-RUN useradd -m ikiwiki
+RUN useradd -ms /bin/bash ikiwiki
 WORKDIR /home/ikiwiki
 USER ikiwiki
 RUN git config --global user.email "you@example.com" && \
   git config --global user.name "Your Name"
-RUN echo $'wiki\n\nadmin\nadmin\nadmin' | \
+RUN export USER=ikiwiki ; \
+  echo $'wiki\n\nadmin\nadmin\nadmin' | \
   ikiwiki --setup /etc/ikiwiki/auto.setup && \
   ikiwiki --changesetup wikiwiki.setup --plugin 404 && \
   ikiwiki --setup wikiwiki.setup
