@@ -1,6 +1,6 @@
 # Docker for ikiwiki
 
-This is a Dockerfile for a sandbox ikiwiki.
+This is a Dockerfile for a sandbox ikiwiki. For a more up-to-date version, see https://github.com/ewann/ikiwiki-docker
 
 ## Run
 
